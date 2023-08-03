@@ -29,7 +29,6 @@ const manageRecipes = async () => {
     // Iteration 3 - Insert multiple recipes and print the title of each recipe
     let allRecipesDb = await Recipe.insertMany(data);
 
-    allRecipesDb.unshift(recipeOneDb); // Repo mentions Database now having 6 recipes so I unshifted it 🙃
     allRecipesDb.forEach((element)=>{
       // console.log(element.title)
     });
@@ -38,7 +37,7 @@ const manageRecipes = async () => {
     let rigatoni = { title: 'Rigatoni alla Genovese' };
 
     let recipeUpdate = await Recipe.findOneAndUpdate(rigatoni, {duration: 100});
-    let findrigatoni = await Recipe.find({title: 'Rigatoni alla Genovese'});
+    let findrigatoni = await Recipe.find(rigatoni);
 
     console.log(findrigatoni);
 
